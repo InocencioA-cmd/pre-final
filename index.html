@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login and Sign Up Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #F3EEEA;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            width: 800px;
+            background-color: #EBE3D5;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-container {
+            width: 100%;
+            max-width: 350px;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        input[type="password"],
+        input[type="email"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #FFDDAE;
+            border: none;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        button:hover {
+            background-color: #CBDCEB;
+        }
+
+        .switch-link {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .switch-link a {
+            text-decoration: none;
+            color: #1E90FF;
+        }
+
+        /* Responsive Design */
+        @media screen and (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                width: 100%;
+                padding: 15px;
+            }
+            .form-container {
+                max-width: 100%;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Login Form -->
+        <div class="form-container login-container" id="login">
+            <h2>Login</h2>
+            <form id="login-form">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+
+                <button type="button" onclick="login()">Log In</button>
+            </form>
+            <div class="switch-link">
+                <p>Don't have an account? <a href="javascript:void(0);" onclick="showSignUp()">Sign Up</a></p>
+            </div>
+        </div>
+
+        <!-- Sign Up Form -->
+        <div class="form-container signup-container" id="signup" style="display: none;">
+            <h2>Sign Up</h2>
+            <form action="/submit-signup" method="POST">
+                <label for="new-username">Username:</label>
+                <input type="text" id="new-username" name="username" required>
+
+                <label for="new-email">Email:</label>
+                <input type="email" id="new-email" name="email" required>
+
+                <label for="new-password">Password:</label>
+                <input type="password" id="new-password" name="password" required>
+
+                <button type="submit">Sign Up</button>
+            </form>
+            <div class="switch-link">
+                <p>Already have an account? <a href="javascript:void(0);" onclick="showLogin()">Login</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Show the Sign-Up form
+        function showSignUp() {
+            document.getElementById('login').style.display = 'none';
+            document.getElementById('signup').style.display = 'block';
+        }
+
+        // Show the Login form
+        function showLogin() {
+            document.getElementById('login').style.display = 'block';
+            document.getElementById('signup').style.display = 'none';
+        }
+
+        // Login function with JS
+        function login() {
+            var username = document.getElementById('username').value;
+            var password = document.getElementById('password').value;
+
+            // Example hardcoded username and password validation
+            if (username === "ashley" && password === "141414") {
+                // Redirect to home page after successful login
+                window.location.href = "home.html";
+            } else {
+                alert("Invalid username or password!");
+            }
+        }
+    </script>
+
+</body>
+</html>
